@@ -4,12 +4,12 @@ import os
 import nations_stats as ns
 
 dbname = "basketballStats"
-conn = sqlite3.connect(dbname + '.sqlite')
+conn = sqlite3.connect("data/" + dbname + '.sqlite')
 cur = conn.cursor()
 
 #check if database exists
-if (dbname + '.sqlite') not in os.listdir():
-	df = pd.read_csv("players_stats_by_season_full_details.csv")
+if (dbname + '.sqlite') not in os.listdir("data"):
+	df = pd.read_csv("data/players_stats_by_season_full_details.csv")
 	df.to_sql(name="stats", con=conn)
 
 
